@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align: center; font-family: Arial; padding-top: 50px;">
+    
+    <h1>🎟️ Sorteio do Ingresso</h1>
+    <p>Adivinhe o número secreto de 1 a 10 para ganhar!</p>
+
+    <!-- Nosso campo de digitação e botão -->
+    <input type="number" id="chute-input" placeholder="Digite um número" style="padding: 10px; font-size: 16px;">
+    <button id="btn-sorteio" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Testar Sorte</button>
+
+    <!-- Aqui o JS vai injetar as dicas (Muito alto, muito baixo, etc) -->
+    <h2 id="mensagem-jogo" style="margin-top: 30px; color: blue;">Faça seu primeiro palpite!</h2>
+
+</body>
+</html>
+<script>
+ 
+    //Sorteia um número de 1 a 10 automaticamente
+    const senhaSecreta = Math.floor(Math.random() * 10) + 1;
+
+    // 1. Capturar os elementos da tela
+    const inputChute = document.getElementById('chute-input');
+    const botaoSorteio = document.getElementById('btn-sorteio');
+    const mensagem = document.getElementById('mensagem-jogo');
+
+    // 2. Ouvir o clique do botão
+    botaoSorteio.addEventListener('click', function() {
+        
+        let palpite = Number(inputChute.value);
+      
+        if (palpite < 1 || palpite > 10) {
+            mensagem.innerText = "🚫 O segurança barrou! Digite apenas números entre 1 e 10.";
+            mensagem.style.color = "red";
+        }
+        else if (palpite === senhaSecreta) {
+            mensagem.innerText = "🎉 PARABÉNS! Você ganhou o Ingresso!";
+            mensagem.style.color = "green";
+            document.body.style.backgroundColor = "#e6ffe6"; // Fica verde clarinho
+        } 
+        else if (palpite > senhaSecreta) {
+            mensagem.innerText = "❌ Muito alto! Tente um número menor.";
+            mensagem.style.color = "red";
+        } 
+        else {
+            mensagem.innerText = "❌ Muito baixo! Tente um número maior.";
+            mensagem.style.color = "orange";
+        }
+    });
+</script>
