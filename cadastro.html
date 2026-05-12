@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<body>
+    <h2>Cadastrar Novo Usuario</h2>
+
+    <imput type="text" id="nome" placeholder="Digite seu nome">
+    <imput type="email" id="email" placeholder="Digite seu email">
+    <button id="btn-salvar">CadastrarGravar Dados</button>
+
+    <br><br>
+    <a href="lista.html">Ir para a lista de Usuários</a>
+</body>
+
+<script>
+    const btn-salvar = document.getElementById('btn-salvar');
+
+    btn-salvar.addEventListener('click', function() {
+        const inputnome = document.getElementById('nome').value;
+        const inputemail = document.getElementById('email').value;
+
+        // Criar um objeto de usuário
+        const usuario = {
+            nome: nome,
+            email: email
+        };
+
+        // Obter a lista de usuários do localStorage ou criar uma nova lista
+        let usuarios = JSON.parse(localStorage.getItem('bancoUsuarios')) || [];
+
+        // Adicionar o novo usuário à lista
+        usuarios.push(novoUsuario);
+
+        // Salvar a lista atualizada no localStorage
+        localStorage.setItem('usuarios', JSON.stringify(lista));
+
+        // Limpar os campos de entrada
+        document.getElementById('nome').value = '';
+        document.getElementById('email').value = '';
+
+        alert('Usuário cadastrado com sucesso!');
+    });
+       
+</script>
+
+</html>
