@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<body>
+    <h2>Usuarios Cadastrados</h2>
+    <ul id="lista-tela"></ul> <br>
+    <a href="cadastro.html">Voltar para o cadastro de usuários</a> 
+</body>
+
+<script>
+    function carregarDados() {
+        const ul = document.getElementById('lista-tela');
+
+        let lista = JSON.parse(localStorage.getItem('bancoUsuarios')) || [];
+
+        ul.innerHTML = '';
+
+        lista.forEach(function(usuario) {
+            const li = document.createElement('li');
+            li.textContent = `Nome: ${usuario.nome}, Email: ${usuario.email}`;
+            ul.appendChild(li);
+        });
+
+        usuarios.forEach(usuario => {
+            const li = document.createElement('li');
+            li.textContent = `Nome: ${usuario.nome}, Email: ${usuario.email}`;
+            listaTela.appendChild(li);
+        });
+    }
+       
+</script>
+
+</html>
